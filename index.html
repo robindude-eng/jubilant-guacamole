@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Premer Kahini — Portfolio</title>
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card: #13151f;
+      --border: #212538;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #ff334b;
+      --accent-glow: rgba(255, 51, 75, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Noto Sans Bengali", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 14.5px;
+      padding: 16px 12px;
+    }
+
+    .container {
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* Full-width Modern Portfolio Hero Card */
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .hero-image-wrapper {
+      width: 100%;
+      height: 360px;
+      background: #1a1d2e;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .hero-overlay-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: linear-gradient(to top, var(--card), transparent);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      padding: 0 18px 20px 18px;
+      margin-top: -16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .role-tag {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 51, 75, 0.35);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-content h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-content p.subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1a1d2e;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    p.body-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    p.body-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Skills / Metrics */
+    .metric-group {
+      margin-bottom: 12px;
+    }
+
+    .metric-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .metric-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #e2e8f0;
+    }
+
+    .metric-bar {
+      width: 100%;
+      height: 6px;
+      background: #1a1d2e;
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .metric-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+    }
+
+    /* Project Cards */
+    .project-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-card {
+      background: #1a1d2e;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .project-card h3 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .project-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Testimonials */
+    .review-card {
+      background: #1a1d2e;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .review-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .review-text {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .review-author {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Interactive Section */
+    .interactive-box {
+      background: #1a1d2e;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      font-size: 0.86rem;
+      color: #f8fafc;
+      min-height: 56px;
+    }
+
+    .btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      transition: transform 0.1s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+      background: #e0243b;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 10px 0 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero-card">
+      <div class="hero-image-wrapper">
+        <img src="character.jpg" alt="Premer Kahini" onerror="this.style.display='none'; this.parentElement.innerText='Place character.jpg in the same folder';" />
+        <div class="hero-overlay-gradient"></div>
+      </div>
+      <div class="hero-content">
+        <div class="role-tag">Certified চুদনা</div>
+        <h1>প্রেমের কাহিনী</h1>
+        <p class="subtitle">ওরফে প্রেম | প্রফেশনাল পরজীবী</p>
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          <span>বর্তমান অবস্থা: বাপের ঘাড়ে বসে ফ্রী ফায়ার খেলা ও অন্যের পেছনে কাঠাল ভাঙা।</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>//</span> সংক্ষিপ্ত বায়োডাটা (মাদারচোদ প্রোফাইল)</div>
+      <p class="body-text">
+        আস্ত একটা আবর্জনা যার জীবনের একমাত্র অর্জন হলো মানুষের বিরক্তি অর্জন করা। পকেটে চা খাওয়ার পাঁচ টাকা নেই, অথচ ভাব মার এমন যেন বিল গেটস তার মামী লাগে। ব্রেন বলতে এক ফোঁটাও কিছু নাই; খুলির ভেতর শুধু গোবর আর ফালতু চুগলি ভরা।
+      </p>
+      <p class="body-text" style="margin-top: 8px;">
+        বন্ধুর বিপদে সবার আগে পিঠে ছুরি বসানো, ধার নিয়ে গায়েব হয়ে যাওয়া এবং ধরা পড়লে চোখে গ্লিসারিন দিয়ে কান্নাকাটি করা—এটাই তার জন্মগত প্রতিভা।
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>//</span> মূর্খতা ও নষ্টামির গ্রাফ</div>
+      <div class="metric-group">
+        <div class="metric-label"><span>ডাহা মিথ্যা কথা বলে পার পেয়ে যাওয়া</span><span>৯৯%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width: 99%;"></div></div>
+      </div>
+      <div class="metric-group" style="margin-top: 10px;">
+        <div class="metric-label"><span>ধার নিয়ে ব্লক করে দেওয়ার স্কিল</span><span>১০০%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width: 100%;"></div></div>
+      </div>
+      <div class="metric-group" style="margin-top: 10px;">
+        <div class="metric-label"><span>ব্রেনে আইকিউ বা বুদ্ধিমত্তা</span><span>১%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width: 1%;"></div></div>
+      </div>
+      <div class="metric-group" style="margin-top: 10px;">
+        <div class="metric-label"><span>বাপের হোটেলে ফ্রী খেয়ে মোটাসোটা হওয়া</span><span>৯৫%</span></div>
+        <div class="metric-bar"><div class="metric-fill" style="width: 95%;"></div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>//</span> কুকীর্তির প্রজেক্টসমূহ</div>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>অপারেশন বাঁশ দেওয়া (২০২৩)</h3>
+          <p>ঘনিষ্ঠ বন্ধুর গোপন কথা অন্য জায়গায় ফাঁস করে নিজে পপকর্ন খেতে খেতে মজা দেখা এবং শেষে "আমি তো জাস্ট বলছিলাম" বলে নির্দোষ সাজা।</p>
+        </div>
+        <div class="project-card">
+          <h3>ধার চুরির মেগা প্রজেক্ট (২০২৪)</h3>
+          <p>বিকাশ বা ক্যাশে জরুরি চিকিৎসার কথা বলে ১৭ জনের কাছ থেকে টাকা ধার নিয়ে সেই টাকা দিয়ে অনলাইনে জুয়া খেলা ও শেষমেশ নাম্বার ব্লক করা।</p>
+        </div>
+        <div class="project-card">
+          <h3>ফ্রি বিরিয়ানি ভোজন উৎসব (২০২৫)</h3>
+          <p>দাউয়াত ছাড়া বিয়ের গেটে ঢুকে দুই প্লেট খাসির বিরিয়ানি খেয়ে এসে ফেসবুকে রান্নার মান নিয়ে লম্বা রিভিউ পোস্ট করা।</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>//</span> ভুক্তভোগীদের অভিশাপ</div>
+      <div class="review-card">
+        <div class="review-text">"শালা আস্ত একটা গাধা। ওকে বিশ্বাস করার চেয়ে বিষ খাওয়া অনেক ভালো, অন্তত শান্তিতে মরতে তো পারব।"</div>
+        <div class="review-author">— রাকিব (সর্বস্বান্ত প্রাক্তন বন্ধু)</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"এত বড় বেহায়া আর নির্লজ্জ মানুষ পুরো পৃথিবীতে দ্বিতীয়টি নাই। মুখ খুললেই গোবর বের হয়।"</div>
+        <div class="review-author">— এলাকার চায়ের দোকানদার</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>//</span> প্রেমের লেটেস্ট ফাজলামো জেনারেটর</div>
+      <div class="interactive-box" id="roast-box">
+        "এই মুহূর্তে ঘরের কোণে বসে অন্যের ওয়াইফাই চুরি করে পর্ন দেখছে এবং ভাবছে সে খুব চালাক।"
+      </div>
+      <button class="btn" onclick="generateRoast()">আরেকটা ফালতু কান্ড দেখুন</button>
+    </div>
+
+    <footer>
+      <p>&copy; ২০২৬ Premer Kahini Portfolio. All rights reserved to nobody because nobody cares about this idiot.</p>
+    </footer>
+  </div>
+
+  <script>
+    const roasts = [
+      "বর্তমান অবস্থা: ফেসবুকে ফেইক আইডি খুলে মেয়েদের প্রোফাইলে কমেন্ট করতে গিয়ে নিজের আসল আইডি থেকে কমেন্ট করে ধরা খেয়ে এখন ডিঅ্যাক্টিভেট করে বসে আছে।",
+      "বর্তমান অবস্থা: পকেটে এক টাকাও নেই অথচ অনলাইনে আইফোন ১৬ প্রো ম্যাক্স অর্ডার করার শখ করছে।",
+      "বর্তমান অবস্থা: সারাদিন বিছানায় শুয়ে রিলস দেখে আর বাপ-মায়ের বকা খেয়ে রাতে ডায়েরিতে লিখে— 'কেউ আমার আসল রূপ বুঝল না'।",
+      "বর্তমান অবস্থা: চায়ের দোকানে বাকি খেয়ে দোকানদার তাড়া করায় পাশের গলি দিয়ে দৌড় দিয়েছে।",
+      "বর্তমান অবস্থা: আয়নার সামনে দাঁড়িয়ে নিজেকে সুপারভিলেন ভেবে নিজেই নিজের দিকে তাকিয়ে ফিচকে হাসছে।"
+    ];
+
+    function generateRoast() {
+      const box = document.getElementById("roast-box");
+      const random = roasts[Math.floor(Math.random() * roasts.length)];
+      box.textContent = random;
+    }
+  </script>
+</body>
+</html>
